@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Barbu</title>
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <!-- Game -->
+    <div id="boite">
+        <h1 class="text-center">Barbu</h1>
+        <div id="message">
+
+        </div>
+        <div id="buttonChoix">
+            <button id="Barbu">Barbu</button>
+            <button id="PasDePlis">Pas de plis</button>
+            <button id="PasDePlis">Pas de coeur</button>
+            <button id="PasDePlis">Pas de dame</button>
+            <button id="PasDePlis">Réussite</button>
+            <button id="PasDePlis">Salade</button>
+        </div>
+        <div id="plateau">
+            <canvas id="canvas" width="640" height="480"> </canvas>
+        </div>
+    </div>
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
