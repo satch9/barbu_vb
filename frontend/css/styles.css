@@ -1,43 +1,61 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #boite {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #message {
-    border: 1px solid grey;
-    margin: auto;
-    width: 640px;
-    height: 150px;
-    overflow-y: auto;
+  border: 1px solid grey;
+  margin: auto;
+  width: 640px;
+  height: 150px;
+  overflow-y: auto;
+}
+#ecrire,
+#usernameBox {
+  margin-top: 20px;
 }
 
+#ecrire {
+  width: 640px;
+}
+@media (min-width: 576px) {
+  .form-inline .input-group {
+    width: 100vw;
+  }
+}
+
+/* #ecrireInputForm {
+  width: 100vw - 320px !important;
+} */
+
 #buttonChoix {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
 #buttonChoix button {
-    width: 97px;
-    height: auto;
-    margin-right: 10px
+  width: 97px;
+  height: auto;
+  margin-right: 10px;
 }
 
 #plateau {
-    margin-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 canvas {
-    margin: auto;
-    display: block;
-    border: 1px solid grey;
-    background-color: darkgreen;
+  margin: auto;
+  display: block;
+  border: 1px solid grey;
+  background-color: darkgreen;
 }
