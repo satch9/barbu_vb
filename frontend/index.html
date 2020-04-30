@@ -1,40 +1,143 @@
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Barbu</title>
-    <style>
+    <style></style>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
 
-    </style>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-
-<body>
+  <body>
     <!-- Game -->
     <div id="boite">
-        <h1 class="text-center">Barbu</h1>
-        <div id="message">
-
+      <h1 class="text-center">Barbu</h1>
+      <div id="message"></div>
+      <div id="ecrire">
+        <form class="form-inline">
+          <label class="sr-only" for="ecrireMessage">Message</label>
+          <div class="input-group mb-2 mr-sm-2" id="ecrireInputForm">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Message</div>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              id="ecrireMessage"
+              placeholder="..."
+            />
+          </div>
+        </form>
+      </div>
+      <div id="usernameBox">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#usernameModal"
+          data-whatever="@Barbu-Bot"
+        >
+          Pseudo
+        </button>
+        <div
+          class="modal fade"
+          id="usernameModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="usernameModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="usernameModalLabel">Pseudo</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="usernameForm">
+                  <div class="form-group">
+                    <label for="destinataire" class="col-form-label"
+                      >Destinataire:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="destinataire"
+                      disabled="true"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="username" class="col-form-label"
+                      >Ton pseudo:</label
+                    >
+                    <input type="text" class="form-control" id="username" />
+                  </div>
+                  <input
+                    type="submit"
+                    class="btn btn-primary"
+                    value="enregistrer"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="buttonChoix">
-            <button id="Barbu">Barbu</button>
-            <button id="PasDePlis">Pas de plis</button>
-            <button id="PasDePlis">Pas de coeur</button>
-            <button id="PasDePlis">Pas de dame</button>
-            <button id="PasDePlis">Réussite</button>
-            <button id="PasDePlis">Salade</button>
-        </div>
-        <div id="plateau">
-            <canvas id="canvas" width="640" height="480"> </canvas>
-        </div>
+      </div>
+      <div id="buttonChoix">
+        <button id="Barbu">Barbu</button>
+        <button id="PasDePlis">Pas de plis</button>
+        <button id="PasDePlis">Pas de coeur</button>
+        <button id="PasDePlis">Pas de dame</button>
+        <button id="PasDePlis">Réussite</button>
+        <button id="PasDePlis">Salade</button>
+      </div>
+      <div id="plateau">
+        <canvas id="canvas" width="640" height="480"></canvas>
+      </div>
     </div>
 
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
 
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="game.js"></script>
-</body>
-
+    <script>
+      $(document).ready(function($) {
+        $("#usernameModal").on("show.bs.modal", function(event) {
+          var button = $(event.relatedTarget); // Button that triggered the modal
+          var recipient = button.data("whatever"); // Extract info from data-* attributes
+          // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+          // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+          var modal = $(this);
+          modal
+            .find(".modal-title")
+            .text("Envoie de ton pseudo à " + recipient);
+          modal.find(".modal-body input#destinataire").val(recipient);
+        });
+      });
+    </script>
+  </body>
 </html>
